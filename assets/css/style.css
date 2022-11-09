@@ -1,0 +1,140 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 13px;
+}
+
+body {
+	height: 100vh;
+	margin: 0 auto;
+	color: #525e75;
+	padding: 1rem 2rem;
+	max-width: 1024px;
+	display: grid;
+	text-align: center;
+	justify-content: center;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+h1 {
+	font-size: 4rem;
+}
+
+h2 {
+	font-size: 3rem;
+}
+
+p {
+	font-size: 3rem;
+}
+
+.desc {
+	font-size: 1.5rem;
+	margin: 3rem auto;
+	line-height: 1.8;
+	width: 50%;
+}
+
+@media screen and (max-width: 768px) {
+	h1 {
+		font-size: 3.5rem;
+	}
+	p {
+		font-size: 2.6rem;
+	}
+	div {
+		font-size: 2.5rem;
+	}
+
+	.desc {
+		width: 100%;
+	}
+}
+
+h1 {
+	text-align: center;
+}
+
+#letters {
+	margin: 1em 0;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	font-family: "Comic Sans MS", sans-serif;
+}
+
+#letters div {
+	font-size: 2.4rem;
+	width: 2em;
+	height: 2em;
+	margin: 5px;
+	padding-top: 0.5em;
+	cursor: pointer;
+	color: #525e75;
+	background: #f8ede3;
+	line-height: 0.9;
+	overflow: hidden;
+	border: 1px solid #ccc;
+	border-radius: 12px;
+	transition: all 0.3s linear;
+}
+
+#letters div:hover {
+	color: #f8ede3;
+	background: #525e75;
+}
+
+#clue {
+	padding: 2rem 1rem 2rem;
+	margin-top: 1rem;
+	margin-bottom: 3rem;
+	border-radius: 12px;
+	color: #fff;
+	background: #525e75;
+}
+
+#clue p {
+	letter-spacing: 0.5em;
+	font-family: "Comic Sans MS", sans-serif;
+}
+
+#letters div.used,
+#letters div.used:hover {
+	background-color: #ede4e0;
+	color: #525e75;
+	opacity: 0.5;
+}
+
+section#image {
+	text-align: center;
+}
+
+section#image img {
+	width: 15%;
+}
+@media screen and (max-width: 768px) {
+	section#image img {
+		width: 40%;
+		/* margin-top: -7rem; */
+	}
+}
+
+section#gameover {
+	cursor: pointer;
+}
+
+section#gameover p {
+	width: 100%;
+	margin: 0 auto;
+	padding: 1rem 2rem;
+	margin-top: 1rem;
+	margin-bottom: 2rem;
+	text-align: center;
+	display: none;
+	border-radius: 12px;
+	background-color: #a7e9af;
+}
