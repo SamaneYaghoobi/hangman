@@ -51,9 +51,8 @@ function selectRandomItem() {
 }
 
 function letterHandeler(letter) {
-	letter = letter.toLowerCase();
 	clicked.indexOf(letter) === -1 ? clicked.push(letter) : null;
-	document.getElementById(letter.toUpperCase()).className = "used";
+	document.getElementById(letter).className = "used";
 	if (randomItem.indexOf(letter) >= 0) {
 		setUnderScores();
 		checkIFWon();
@@ -77,6 +76,9 @@ function checkIFWon() {
 	if (randomItem === result) {
 		document.getElementById("gameover").querySelector("p").style.display =
 			"block";
+		document
+			.getElementById("gameover")
+			.querySelector("p").innerText = `You Win! - Click to restart`;
 		document.querySelector(".game-img").src = "assets/images/win.png";
 	}
 }

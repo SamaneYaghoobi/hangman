@@ -14,7 +14,6 @@ body {
 	color: #525e75;
 	padding: 1rem 2rem;
 	max-width: 1024px;
-	display: grid;
 	text-align: center;
 	justify-content: center;
 	font-family: Helvetica, Arial, sans-serif;
@@ -91,7 +90,6 @@ h1 {
 #clue {
 	padding: 2rem 1rem 2rem;
 	margin-top: 1rem;
-	margin-bottom: 3rem;
 	border-radius: 12px;
 	color: #fff;
 	background: #525e75;
@@ -111,6 +109,7 @@ h1 {
 
 section#image {
 	text-align: center;
+	margin: 5rem auto 4rem;
 }
 
 section#image img {
