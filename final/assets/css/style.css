@@ -122,11 +122,11 @@ section#image img {
 	}
 }
 
-section#gameover {
+section#gameOver {
 	cursor: pointer;
 }
 
-section#gameover p {
+section#gameOver p {
 	width: 100%;
 	margin: 0 auto;
 	padding: 1rem 2rem;
@@ -136,4 +136,8 @@ section#gameover p {
 	display: none;
 	border-radius: 12px;
 	background-color: #a7e9af;
+}
+
+section#try{
+	display: none;
 }

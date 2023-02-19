@@ -1,4 +1,4 @@
-const secretPharases = [
+const secretPhrases = [
 	"able",
 	"about",
 	"account",
@@ -26,7 +26,6 @@ const secretPharases = [
 	"monkey",
 	"amazing",
 	"pancake",
-	"galvainze",
 	"cohort",
 	"concatenate",
 	"iteration",
@@ -43,29 +42,33 @@ let result = "";
 let mistakes = 0;
 
 function selectRandomItem() {
-	randomItem =
-		secretPharases[Math.floor(Math.random() * secretPharases.length)];
-	document.getElementById("letters").addEventListener("click", buttonHandeler);
-	window.addEventListener("keydown", keyHandeler);
-	// console.log(randomItem);
+	randomItem = secretPhrases[Math.floor(Math.random() * secretPhrases.length)];
+	document.getElementById("letters").addEventListener("click", buttonHandler);
+	window.addEventListener("keydown", keyHandler);
 }
 
-function letterHandeler(letter) {
-	clicked.indexOf(letter) === -1 ? clicked.push(letter) : null;
-	document.getElementById(letter).className = "used";
+function letterHandler(letter) {
+	let isUsed;
+	clicked.indexOf(letter) === -1
+		? clicked.push(letter)
+		: (isUsed = clicked.includes(letter));
+	const selectedLetter = document.getElementById(letter);
+	selectedLetter.className = "used";
 	if (randomItem.indexOf(letter) >= 0) {
 		setUnderScores();
 		checkIFWon();
-	} else if (randomItem.indexOf(letter === -1)) {
+	} else if (randomItem.indexOf(letter === -1) && !isUsed) {
+		document.querySelector("#try").style.display = "block";
 		mistakes++;
-		checkiFLose();
+		checkIfLose();
 		updateHangmanImg();
+		countTryNumber();
 	}
 }
 
 function setUnderScores() {
-	let splitedWord = randomItem.split("");
-	let mappedWord = splitedWord.map((letter) =>
+	let splittedWord = randomItem.split("");
+	let mappedWord = splittedWord.map((letter) =>
 		clicked.indexOf(letter) >= 0 ? letter : "_"
 	);
 	result = mappedWord.join("");
@@ -74,48 +77,58 @@ function setUnderScores() {
 
 function checkIFWon() {
 	if (randomItem === result) {
-		document.getElementById("gameover").querySelector("p").style.display =
+		document.getElementById("gameOver").querySelector("p").style.display =
 			"block";
 		document
-			.getElementById("gameover")
+			.getElementById("gameOver")
 			.querySelector("p").innerText = `You Win! - Click to restart`;
-		document.querySelector(".game-img").src = "assets/images/win.png";
+		document.querySelector(".game-img").src = "assets/images/win.jpg";
 	}
 }
 
-function checkiFLose() {
+function checkIfLose() {
 	if (mistakes === 6) {
-		document.getElementById("gameover").querySelector("p").style.display =
+		document.getElementById("gameOver").querySelector("p").style.display =
 			"block";
 		document.getElementById(
 			"clue"
 		).innerHTML = `<p>Random word is: ${randomItem}</p>`;
 		document.getElementById("clue").querySelector("p").style.letterSpacing = 0;
 		document
-			.querySelector("#gameover")
+			.querySelector("#gameOver")
 			.querySelector("p").style.backgroundColor = "#FF7878";
-		document.querySelector("#gameover").querySelector("p").style.color = "#fff";
+		document.querySelector("#gameOver").querySelector("p").style.color = "#fff";
+		document.querySelector("#try").style.display = "none";
 	}
 }
 
 function updateHangmanImg() {
-	const changeimg = document.querySelector(".game-img");
-	changeimg.src = `assets/images/hangman${mistakes}.png`;
+	const changeImg = document.querySelector(".game-img");
+	changeImg.src = `assets/images/hangman${mistakes}.jpg`;
 	if (mistakes >= 7) {
-		changeimg.src = `assets/images/hangman0.png`;
+		changeImg.src = `assets/images/hangman0.jpg`;
 	}
 }
 
-document.getElementById("gameover").addEventListener("click", function () {
+function countTryNumber() {
+	const tryNumber = document.querySelector("#tryNumber");
+	tryNumber.innerText = `${mistakes}/6`;
+	changeImg.src = `assets/images/hangman${mistakes}.jpg`;
+	if (mistakes >= 7) {
+		changeImg.src = `assets/images/hangman0.jpg`;
+	}
+}
+
+document.getElementById("gameOver").addEventListener("click", function () {
 	location.reload();
 });
 
-function buttonHandeler(event) {
-	letterHandeler(event.target.id);
+function buttonHandler(event) {
+	letterHandler(event.target.id);
 }
 
-function keyHandeler(event) {
-	letterHandeler(event.key);
+function keyHandler(event) {
+	letterHandler(event.key);
 }
 
 selectRandomItem();
